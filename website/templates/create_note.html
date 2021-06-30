@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+{% block title %}Create note{% endblock %}
+{% block content %}
+<div class="col-md-4 col-md-offset-4">
+  <form method="POST" action="/new">
+    <h2>Add New Note</h2>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <div class="notification is-danger">
+      {{ messages[0] }}
+    </div>
+    {% endif %} {% endwith %}
+    <div class="form-group">
+      <label for="note">Note</label>
+      <input
+        type="text"
+        class="form-control"
+        id="note"
+        name="note"
+        aria-describedby="noteHelp"
+        placeholder="any note"
+      />
+    </div>
+    <div class="form-group">
+      <label for="note">End date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="end_date"
+        name="end_date"
+        aria-describedby="noteHelp"
+        placeholder="any end date"
+      />
+    </div>
+    <div class="form-group">
+      <label for="note">Status</label>
+      <select 
+      id="status" 
+      name="status"
+      class="form-control">
+      <option>In progress</option>
+      <option>Completed</option>
+    </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </form>
+</div>
+{% endblock %}

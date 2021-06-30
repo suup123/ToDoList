@@ -1,0 +1,51 @@
+{% extends "base.html" %} 
+{% block title %}Update note{% endblock %}
+{% block content %}
+<div class="col-md-4 col-md-offset-4">
+  <form
+    method="POST"
+    action="{{ url_for('views.update_note', note_id=note.id) }}"
+  >
+    <h2>Update Note</h2>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <div class="notification is-danger">
+      {{ messages[0] }}
+    </div>
+    {% endif %} {% endwith %}
+    <div class="form-group">
+      <label for="comment">Note</label>
+      <input
+        type="text"
+        class="form-control"
+        id="note"
+        name="note"
+        aria-describedby="noteHelp"
+        placeholder="Any note"
+      />
+    </div>
+    <div class="form-group">
+      <label for="note">End date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="end_date"
+        name="end_date"
+        aria-describedby="noteHelp"
+        placeholder="any end date"
+      />
+    </div>
+    <div class="form-group">
+      <label for="note">Status</label>
+      <select 
+      id="status" 
+      name="status"
+      class="form-control"
+      >
+      <option>In progress</option>
+      <option>Completed</option>
+    </select>
+  </br>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+{% endblock %}
